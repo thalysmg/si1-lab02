@@ -13,41 +13,85 @@
   
 </head>
 <body ng-controller="megaSeriesCtrl">
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Mega Séries</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Mega Séries</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#home">Home</a></li>
+        <li><a href="#profile">Meu Perfil</a></li>
+        <li><a href="#watchList">WatchList</a></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" ng-model="nameSerie">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit" ng-click="searchSeries(nameSerie)">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#home">Home</a></li>
-      <li><a href="#profile">Meu Perfil</a></li>
-      <li><a href="#watchList">WatchList</a></li>
-    </ul>
-    <form class="navbar-form navbar-left">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search" ng-model="nameSerie">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit" ng-click="searchSeries(nameSerie)">
-            <i class="glyphicon glyphicon-search"></i>
-          </button>
+  </nav>
+  <div class="container">
+  <!-- series pesquisadas -->
+    <div class="tab-content"> 
+      <!--home-->
+      <div class="home">
+        <div class="display" ng-repeat="serie in series"> 
+          <img class="posters" ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}"/>
+          <p class="title">{{serie.Title}}</p>                 
+          <button class="btn btn-primary meuBotao" ng-click="addSerieProfile(serie.imdbID)">Adicionar ao seu Perfil</button>
+          <button class="btn btn-warning meuBotao" ng-click="addSerieWatchList(serie)">Adicionar à sua WatchList</button> 
         </div>
       </div>
-    </form>
+    </div>
+
+    <div id="Perfil" class="tab-pane in active">
+        <div id="infoicon"> 
+        </div>
+        
+        <md-list-item ng-repeat= "serie in profileSeries">
+          <div class="col-lg-3">
+            <div class="hoverzoom">
+              <div id="thumbsize" class="thumbnail grow">
+                <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
+                <div class="retina">
+                  <p>{{serie.Title}}</p>
+                  <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal{{$index}}">Sobre</button>
+                  <button class="btn btn-danger btn-block" ng-click="mySerieRemove(serie)">Remover Série</button>
+                </div>  
+                </div>
+              </div>
+          </div>
+
+    <!-- Watchlist -->
+
+    <div id="watchlist" class="tab-pane">
+      <div id="infoicon"></div>
+      <md-list-item ng-repeat= "serie in watchlist" >
+        <div class="col-lg-3">
+          <div class="hoverzoom">
+            <div id="thumbsize" class="thumbnail grow">
+              <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
+              <div class="retina">
+                <p>{{serie.Title}}</p>
+                <button class="btn btn-primary btn-block" ng-click="addSerie(serie)">Add ao Meu Perfil</button>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </md-list-item>
+    </div>
   </div>
-</nav>
 
-<div>  
-    <ul ng-repeat="serie in series"> 
-      <img ng-src="{{serie.Poster}}" class="posters"/>  
-  </ul>>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="lib/angular/angular.js"></script>
-<script src="home/app.js"></script>
-<script src="home/service/seriesAPIService.js"></script>
-<script src="home/controller/megaSeriesController.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="home/app.js"></script>
+  <script src="home/service/seriesAPIService.js"></script>
+  <script src="home/controller/megaSeriesController.js"></script> 
 </body>
 </html>

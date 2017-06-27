@@ -15,9 +15,34 @@ body {
 }*/
 
 .posters {
-  cursor: pointer; 
-  float: left;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  	max-width: 202px;
+  	max-height: 300px;
+  	min-width: 202px;
+  	min-height: 300px;
+  	margin-bottom: 10px;
+  	margin-left: 10px;
+  	margin-right: 10px;
+  	margin-top: 10px;
+}
+
+.title {
+	color: white;
+	text-align: center;
+	background-color: grey;
+	display: block;
+	max-width: 202px;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-left: 10px;
+  	margin-right: 10px;
+}
+
+.display {
+	position: relative; display: inline-grid;
+}
+
+.meuBotao {
+	max-width: 202px;
+	margin-left: 10px;
+	margin-bottom: 5px;
 }
