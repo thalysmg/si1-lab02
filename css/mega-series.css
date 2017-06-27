@@ -33,6 +33,10 @@ body {
 	position: relative; display: inline-grid;
 }
 
+.container {
+	width: 100%;
+}
+
 .button {
 	max-width: 202px;
 	margin-left: 10px;

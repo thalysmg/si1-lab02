@@ -4,35 +4,18 @@ angular.module("MegaSeries", []).controller("megaSeriesCtrl", function($scope,$h
     $scope.profileSeries = [];
     $scope.watchList = [];
     $scope.serieID = [];
-
-    //flags of the html page 
-    $scope.showProfileSeries = true;
-    $scope.showSearchedSeries = false;
-    $scope.showWatchList = false;
-
-    $scope.showProfileSeries = function() {
-        $scope.showProfileSeries = true;
-        $scope.showSearchedSeries = false;
-        $scope.showWatchList = false;
-    }
-
-    $scope.showWatchList = function() {
-        $scope.showWatchList = true;
-        $scope.showProfileSeries = false;
-        $scope.showSearchedSeries = false;
-    }
+    $scope.searchedSeries = {Response: "False"};
 
     //funcao que retorna uma lista com as series relacionadas
     $scope.searchSeries = function(nome) {   
         $scope.searchedSeries = {Response: "False"};
         $http.get("https://omdbapi.com/?s=" + nome + "&type=series&apikey=93330d3c").then(function(response) {
             $scope.series = response.data.Search; 
-            // console.log($scope.series);
+            console.log($scope.series);
             $scope.searchedSeries = response.data;
             if($scope.searchedSeries.Response == "False") {
                 alert("Nenhuma séria com nome " + nome + " encontrada");
             }
-            $scope.showSearchedSeries = true;
         });
     }
 

@@ -13,84 +13,89 @@
   
 </head>
 <body ng-controller="megaSeriesCtrl">
-    <!-- Barra de Pesquisa -->
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand">Mega Séries</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#home">Home</a></li>
-                <li><a href="#profile" ng-click="showProfileSeries()">Meu Perfil</a></li>
-                <li><a href="#watchList" ng-click="showWatchList()">WatchList</a></li>
-            </ul>
-            <form class="navbar-form navbar-left">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" ng-model="nameSerie">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit" ng-click="searchSeries(nameSerie)">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
+    <div class="container">
+        <!-- Barra de Pesquisa -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Mega Séries</a>
                 </div>
-            </form>
-        </div>
-    </nav>
-    <div class="container" ng-if="showSearchedList">
-        <div class="tab-content"> 
-          <!--searched-->
-          <div class="searched">
-            <div class="display" ng-repeat="serie in series"> 
-                <img class="posters" ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}"/>
-                <p class="title">{{serie.Title}}</p>                 
-                <button class="btn btn-primary button" ng-click="addSerieProfile(serie)">Adicionar ao seu Perfil</button>
-                <button class="btn btn-warning button" ng-click="addSerieWatchList(serie)">Adicionar à sua WatchList</button> 
-            </div>
-        </div>
-    </div>
-
-    <!-- profile -->
-    <div id="Perfil" class="tab-pane in active" ng-if="showProfileSeries">
-        <div id="infoicon"> </div>
-
-        <md-list-item ng-repeat= "serie in profileSeries">
-            <div class="col-lg-3">
-                <div class="hoverzoom">
-                    <div id="thumbsize" class="thumbnail grow">
-                        <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
-                        <div class="retina">
-                            <p class="title">{{serie.Title}}</p>
-                            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal{{$index}}">Sobre</button>
-                            <button class="btn btn-danger btn-block" ng-click="profileRemove(serie)">Remover Série</button>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-        </md-list-item>
-            
-            <!-- Watchlist -->
-        <div id="watchlist" class="tab-pane" ng-if="showWatchList">
-            <div id="infoicon"></div>
-            <md-list-item ng-repeat= "serie in watchList" >
-                <div class="col-lg-3">
-                    <div class="hoverzoom">
-                        <div id="thumbsize" class="thumbnail grow">
-                            <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
-                            <div class="retina">
-                                <p class="title">{{serie.Title}}</p>
-                                <button class="btn btn-primary btn-block" ng-click="addSerieProfile(serie)">Adicionar ao Meu Perfil</button>
-                            </div>  
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#home" ng-click="showProfileSeries()">Home</a></li>
+                    <li><a href="#profile">Meu Perfil</a></li>
+                    <li><a href="#watchList">WatchList</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="nameSerie">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit" ng-click="searchSeries(nameSerie)">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
                         </div>
                     </div>
+                </form>
+            </div>
+        </nav>
+
+
+        <div class="tab-content"> 
+            <!--searched-->
+            <div class="searched">
+                <div class="display" ng-repeat="serie in series"> 
+                    <img class="posters" ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}"/>
+                    <p class="title">{{serie.Title}}</p>                 
+                    <button class="btn btn-primary button" ng-click="addSerieProfile(serie)">Adicionar ao seu Perfil</button>
+                    <button class="btn btn-warning button" ng-click="addSerieWatchList(serie)">Adicionar à sua WatchList</button> 
                 </div>
-            </md-list-item>
+            </div>
+
+
+            <!-- profile -->
+            <div id="Perfil" class="tab-pane in active">
+                <div id="infoicon"> </div>
+
+                <md-list-item ng-repeat= "serie in profileSeries">
+                    <div class="col-lg-3">
+                        <div class="hoverzoom">
+                            <div id="thumbsize" class="thumbnail grow">
+                                <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights"/>
+                                <div class="retina">
+                                    <p class="title">{{serie.Title}}</p>
+                                    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal{{$index}}">Sobre</button>
+                                    <button class="btn btn-danger btn-block" ng-click="profileRemove(serie)">Remover Série</button>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
+            </div>
+                
+            <!-- Watchlist -->
+            <div id="watchlist" class="tab-pane">
+                <div id="infoicon"></div>
+                <md-list-item ng-repeat= "serie in watchList" >
+                    <div class="col-lg-3">
+                        <div class="hoverzoom">
+                            <div id="thumbsize" class="thumbnail grow">
+                                <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
+                                <div class="retina">
+                                    <p class="title">{{serie.Title}}</p>
+                                    <button class="btn btn-primary btn-block" ng-click="addSerieProfile(serie)">Adicionar ao Meu Perfil</button>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
+            </div>
         </div>
     </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="lib/angular/angular.js"></script>
-        <script src="home/app.js"></script>
-        <script src="home/service/seriesAPIService.js"></script>
-        <script src="home/controller/megaSeriesController.js"></script> 
-    </body>
-    </html>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="home/app.js"></script>
+    <script src="home/service/seriesAPIService.js"></script>
+    <script src="home/controller/megaSeriesController.js"></script> 
+</body>
+</html>
