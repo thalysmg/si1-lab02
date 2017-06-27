@@ -1,28 +1,20 @@
 .navbar {
-  background-color: black;
+	background-color: black;
 }  
 
 body {
-  background-color: darkred ;
+	background-color: darkred ;
 }
 
-/*h3 {
-  color: white;      
-}*/
-
-/*p {
-  color: white;
-}*/
-
 .posters {
-  	max-width: 202px;
-  	max-height: 300px;
-  	min-width: 202px;
-  	min-height: 300px;
-  	margin-bottom: 10px;
-  	margin-left: 10px;
-  	margin-right: 10px;
-  	margin-top: 10px;
+	max-width: 202px;
+	max-height: 300px;
+	min-width: 202px;
+	min-height: 300px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
 }
 
 .title {
@@ -34,15 +26,26 @@ body {
 	overflow: hidden;
 	white-space: nowrap;
 	margin-left: 10px;
-  	margin-right: 10px;
+	margin-right: 10px;
 }
 
 .display {
 	position: relative; display: inline-grid;
 }
 
-.meuBotao {
+.button {
 	max-width: 202px;
 	margin-left: 10px;
 	margin-bottom: 5px;
+}
+
+.grow {
+	max-width: 202px;
+	max-height: 300px;
+	min-width: 202px;
+	min-height: 300px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
 }
