@@ -5,23 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   <style>
-   
-    .navbar {
-      background-color: black;
-    }  
-    body {
-      background-color: darkred ;
-    }
-    h3 {
-      color: white;      
-    }
-    p {
-      color: white;
-    }
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  
+  <link rel="stylesheet" href="css/mega-series.css"/>
+  
 
-    </style>
+  
 </head>
 <body ng-controller="megaSeriesCtrl">
 
@@ -31,9 +20,9 @@
       <a class="navbar-brand" href="#">Mega Séries</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Meu Perfil</a></li>
-      <li><a href="#">WatchList</a></li>
+      <li class="active"><a href="#home">Home</a></li>
+      <li><a href="#profile">Meu Perfil</a></li>
+      <li><a href="#watchList">WatchList</a></li>
     </ul>
     <form class="navbar-form navbar-left">
       <div class="input-group">
@@ -48,16 +37,17 @@
   </div>
 </nav>
 
-<div ng-repeat="serie in listSer"> 
-  <img ng-src="{{serie.Poster}}" alt="{{serie.title}}"/>
-
+<div>  
+    <ul ng-repeat="serie in series"> 
+      <img ng-src="{{serie.Poster}}" class="posters"/>  
+  </ul>>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="lib/angular/angular.js"></script>
-<script src="js/app.js"></script>
-<script src="js/service/seriesAPIService.js"></script>
-<script src="js/controller/megaSeriesController.js"></script> 
+<script src="home/app.js"></script>
+<script src="home/service/seriesAPIService.js"></script>
+<script src="home/controller/megaSeriesController.js"></script> 
 </body>
 </html>
