@@ -56,7 +56,7 @@
                 <div id="infoicon"> </div>
 
                 <md-list-item class="display" ng-repeat= "serie in profileSeries">
-                    <div class="col-lg-3">
+                    <div>
                         <div class="hoverzoom">
                             <div id="thumbsize" class="thumbnail grow">
                                 <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights"/>
@@ -74,12 +74,12 @@
             <!-- Watchlist -->
             <div id="watchList" class="tab-pane in active">
                 <div id="infoicon"></div>
-                <md-list-item ng-repeat= "serie in watchList" class="display">
-                    <div class="col-lg-3">
-                        <div class="hoverzoom">
+                <md-list-item class="display" ng-repeat= "serie in watchList">
+                    <div>
+                        <div>
                             <div id="thumbsize" class="thumbnail grow">
                                 <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
-                                <div class="retina">
+                                <div>
                                     <p class="title">{{serie.Title}}</p>
                                     <button class="btn btn-primary btn-block" ng-click="addSerieProfile(serie)">Adicionar ao Meu Perfil</button>
                                 </div>  

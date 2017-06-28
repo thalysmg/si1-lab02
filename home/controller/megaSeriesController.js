@@ -44,7 +44,9 @@ angular.module("MegaSeries", []).controller("megaSeriesCtrl", function($scope,$h
 
     $scope.addSerieWatchList = function(serie) {
         if ($scope.profileContains(serie.imdbID)) {
-            alert("Não foi possível adicionar à sua WatchList: série já adicionada no seu perfil");
+            alert("Não foi possível adicionar à sua WatchList: série já foi adicionada no seu perfil");
+        } else if ($scope.watchListContains(serie.imdbID)) {
+            alert("Não foi possível adicionar à sua WatchList: série já foi adicionada na sua watchList");
         } else {
             $scope.watchList.push(serie);
             console.log($scope.watchList);
@@ -59,6 +61,15 @@ angular.module("MegaSeries", []).controller("megaSeriesCtrl", function($scope,$h
     $scope.profileContains = function(Id){
         for (var i = 0; i < $scope.profileSeries.length; i++) {
             if ($scope.profileSeries[i].imdbID === Id){
+                return true;
+            }
+        }
+        return false;
+    };
+
+     $scope.watchListContains = function(Id){
+        for (var i = 0; i < $scope.watchList.length; i++) {
+            if ($scope.watchList[i].imdbID === Id){
                 return true;
             }
         }
