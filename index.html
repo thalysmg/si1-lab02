@@ -21,7 +21,7 @@
                     <a class="navbar-brand">Mega Séries</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#home" ng-click="showProfileSeries()">Home</a></li>
+                    <li class="active"><a href="#home">Home</a></li>
                     <li><a href="#profile">Meu Perfil</a></li>
                     <li><a href="#watchList">WatchList</a></li>
                 </ul>
@@ -41,7 +41,7 @@
 
         <div class="tab-content"> 
             <!--searched-->
-            <div class="searched">
+            <div id="home" class="searched">
                 <div class="display" ng-repeat="serie in series"> 
                     <img class="posters" ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}"/>
                     <p class="title">{{serie.Title}}</p>                 
@@ -52,10 +52,10 @@
 
 
             <!-- profile -->
-            <div id="Perfil" class="tab-pane in active">
+            <div id="profile" class="tab-pane in active">
                 <div id="infoicon"> </div>
 
-                <md-list-item ng-repeat= "serie in profileSeries">
+                <md-list-item ng-repeat= "serie in profileSeries" class="display">
                     <div class="col-lg-3">
                         <div class="hoverzoom">
                             <div id="thumbsize" class="thumbnail grow">
@@ -72,7 +72,7 @@
             </div>
                 
             <!-- Watchlist -->
-            <div id="watchlist" class="tab-pane">
+            <div id="watchList" class="tab-pane in active">
                 <div id="infoicon"></div>
                 <md-list-item ng-repeat= "serie in watchList" >
                     <div class="col-lg-3">
@@ -90,7 +90,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="lib/angular/angular.js"></script>
