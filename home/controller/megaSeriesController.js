@@ -5,7 +5,7 @@ angular.module("MegaSeries", []).controller("megaSeriesCtrl", function($scope,$h
     $scope.watchList = [];
     $scope.serieID = [];
     $scope.searchedSeries = {Response: "False"};
-
+    
     //funcao que retorna uma lista com as series relacionadas
     $scope.searchSeries = function(nome) {   
         $scope.searchedSeries = {Response: "False"};

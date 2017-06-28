@@ -21,8 +21,8 @@
                     <a class="navbar-brand">Mega Séries</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#home">Home</a></li>
-                    <li><a href="#profile">Meu Perfil</a></li>
+                    <li class="active"><a href="#home">Página Inicial</a></li>
+                    <li><a href="#profile">Perfil</a></li>
                     <li><a href="#watchList">WatchList</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
@@ -41,7 +41,7 @@
 
         <div class="tab-content"> 
             <!--searched-->
-            <div id="home" class="searched">
+            <div id="search" class="searched">
                 <div class="display" ng-repeat="serie in series"> 
                     <img class="posters" ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}"/>
                     <p class="title">{{serie.Title}}</p>                 
@@ -55,7 +55,7 @@
             <div id="profile" class="tab-pane in active">
                 <div id="infoicon"> </div>
 
-                <md-list-item ng-repeat= "serie in profileSeries" class="display">
+                <md-list-item class="display" ng-repeat= "serie in profileSeries">
                     <div class="col-lg-3">
                         <div class="hoverzoom">
                             <div id="thumbsize" class="thumbnail grow">
@@ -74,7 +74,7 @@
             <!-- Watchlist -->
             <div id="watchList" class="tab-pane in active">
                 <div id="infoicon"></div>
-                <md-list-item ng-repeat= "serie in watchList" >
+                <md-list-item ng-repeat= "serie in watchList" class="display">
                     <div class="col-lg-3">
                         <div class="hoverzoom">
                             <div id="thumbsize" class="thumbnail grow">
