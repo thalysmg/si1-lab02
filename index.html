@@ -68,9 +68,62 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Modal Home -->
+
+                    <div id="myModal{{$index}}" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg">
+    
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title alinhacentro">{{serie.Title}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
+                                    </div>
+                                    <div class="col-md-8 sinopse"><p>{{serie.Plot}}</p></div>
+                                    <div class="col-md-8 info">
+                                        <img class="infoicons" src="icons/imdb3.png">
+                                        <p><b>Média no IMDb:</b> {{serie.imdbRating}}</p>
+                                        <img class="infoicons" src="icons/imdbrated.png">
+                                        <p><b>Classificação Indicativa:</b> {{serie.Rated}}</p>
+                                        <div class="input-group input">
+                                            <input ng-model="nota" type="text" class="form-control" placeholder="Ex.: 8.5">
+                                                <div class="input-group-btn">
+                                                 <button class="btn btn-basic" type="submit" ng-click="setMyRating(serie,nota)">
+                                                    <i>Ok</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <img class="avaliacao" src="icons/avaliacao.jpg">
+                                        <p><b>Sua Avaliação:</b> {{serie.myRating}}</p>
+                                        <div class="input-group input">
+                                            <input ng-model="lastep" type="text" class="form-control" placeholder="Ex.: S01EP05">
+                                                <div class="input-group-btn">
+                                                 <button class="btn btn-basic" type="submit" ng-click="setLastEpisode(serie,lastep)">
+                                                    <i>Ok</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <img class="lastEpisode" src="icons/last-episode.jpg">
+                                        <p><b>Último episódio que você viu:</b> {{serie.lastEpisode}}</p>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+      
+                        </div>
+                    </div>
                 </md-list-item>
             </div>
-                
+
             <!-- Watchlist -->
             <div id="watchList" class="tab-pane in active">
                 <div id="infoicon"></div>
