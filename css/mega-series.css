@@ -17,6 +17,13 @@ body {
 	margin-top: 10px;
 }
 
+.pageTitle {
+	text-align: center;
+	color: white;
+	font-size: 40px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
 .title {
 	color: white;
 	text-align: center;
@@ -36,6 +43,10 @@ body {
 
 .container {
 	width: 100%;
+}
+
+.btn {
+	max-width: 202px;
 }
 
 .button {

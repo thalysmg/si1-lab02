@@ -21,9 +21,9 @@
                     <a class="navbar-brand">Mega Séries</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#home">Página Inicial</a></li>
-                    <li><a href="#profile">Perfil</a></li>
-                    <li><a href="#watchList">WatchList</a></li>
+                    <li class="active"><a href="#home" data-toggle="tab">Página Inicial</a></li>
+                    <li><a href="#profile" data-toggle="tab" ng-click="zeraSearchedList()">Perfil</a></li>
+                    <li><a href="#watchList" data-toggle="tab" ng-click="zeraSearchedList()">WatchList</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div class="input-group">
@@ -41,29 +41,43 @@
 
         <div class="tab-content"> 
             <!--searched-->
-            <div id="search" class="searched">
+            <div id="home" class="tab-pane in active">
                 <div class="display" ng-repeat="serie in series"> 
                     <img class="posters" ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}"/>
                     <p class="title">{{serie.Title}}</p>                 
                     <button class="btn btn-primary button" ng-click="addSerieProfile(serie)">Adicionar ao seu Perfil</button>
                     <button class="btn btn-warning button" ng-click="addSerieWatchList(serie)">Adicionar à sua WatchList</button> 
                 </div>
+                <h1 class="pageTitle">SÉRIES QUE VOCÊ ACOMPANHA</h1>
+                <div class="display" ng-repeat="serie in profileSeries">
+                        <div class="hoverzoom">
+                            <div id="thumbsize">
+                                <img id="imagesize" class="posters" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights"/>
+                                <div class="retina">
+                                    <p class="title">{{serie.Title}}</p>
+                                    <button class="btn btn-info btn-block button" data-toggle="modal" data-target="#myModal{{$index}}">Sobre</button>
+                                    <button class="btn btn-danger btn-block button" ng-click="profileRemove(serie)">Remover Série</button>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
             </div>
 
 
             <!-- profile -->
-            <div id="profile" class="tab-pane in active">
+            <div id="profile" class="tab-pane">
+                <h1 class="pageTitle">SÉRIES QUE VOCÊ ACOMPANHA</h1>
                 <div id="infoicon"> </div>
 
                 <md-list-item class="display" ng-repeat= "serie in profileSeries">
                     <div>
                         <div class="hoverzoom">
-                            <div id="thumbsize" class="thumbnail grow">
-                                <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights"/>
+                            <div id="thumbsize">
+                                <img id="imagesize" class="posters" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights"/>
                                 <div class="retina">
                                     <p class="title">{{serie.Title}}</p>
-                                    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal{{$index}}">Sobre</button>
-                                    <button class="btn btn-danger btn-block" ng-click="profileRemove(serie)">Remover Série</button>
+                                    <button class="btn btn-info btn-block button" data-toggle="modal" data-target="#myModal{{$index}}">Sobre</button>
+                                    <button class="btn btn-danger btn-block button" ng-click="profileRemove(serie)">Remover Série</button>
                                 </div>  
                             </div>
                         </div>
@@ -125,16 +139,17 @@
             </div>
 
             <!-- Watchlist -->
-            <div id="watchList" class="tab-pane in active">
+            <div id="watchList" class="tab-pane">
+                <h1 class="pageTitle">WATCHLIST</h1>
                 <div id="infoicon"></div>
                 <md-list-item class="display" ng-repeat= "serie in watchList">
                     <div>
                         <div>
-                            <div id="thumbsize" class="thumbnail grow">
-                                <img id="imagesize" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
+                            <div id="thumbsize">
+                                <img id="imagesize" class="posters" src="{{serie.Poster !== 'N/A' ? serie.Poster: 'http://static.wixstatic.com/media/a12bdd_3ada577816f54eadac4daae575e55de6~mv2.gif_256'}}" alt="Lights">
                                 <div>
                                     <p class="title">{{serie.Title}}</p>
-                                    <button class="btn btn-primary btn-block" ng-click="addSerieProfile(serie)">Adicionar ao Meu Perfil</button>
+                                    <button class="btn btn-primary btn-block button" ng-click="addSerieProfile(serie)">Adicionar ao Meu Perfil</button>
                                 </div>  
                             </div>
                         </div>

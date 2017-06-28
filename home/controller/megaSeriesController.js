@@ -28,10 +28,8 @@ angular.module("MegaSeries", []).controller("megaSeriesCtrl", function($scope,$h
                 console.log($scope.profileSeries);
             },  function (error) {
 
-            });
-            
+            });  
         };
-
     };
 
     $scope.profileRemove = function(serie){
@@ -75,6 +73,10 @@ angular.module("MegaSeries", []).controller("megaSeriesCtrl", function($scope,$h
         }
         return false;
     };
+
+    $scope.zeraSearchedList = function() {
+        $scope.series = [];
+    }
 
     $scope.setMyRating = function(serie,nota){
         serie.myRating = nota;      
