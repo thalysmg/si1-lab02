@@ -26,6 +26,9 @@ angular.module("MegaSeries", []).controller("megaSeriesCtrl", function($scope,$h
             $http.get("https://omdbapi.com/?i=" + serie.imdbID + "&type=series&apikey=93330d3c").then(function(response) {
                 $scope.profileSeries.push(response.data); 
                 console.log($scope.profileSeries);
+                if ($scope.watchListContains(serie.imdbID)) {
+                    $scope.watchListRemove(serie);
+                }
             },  function (error) {
 
             });  
